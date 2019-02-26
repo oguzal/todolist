@@ -18,8 +18,14 @@ namespace TodoApi.Data
         {
             return this.list;
         }
+        public virtual int NextId()
+        {
+           return list.Count == 0 ? 1 : list.Max(p => p.Id) + 1;
+        }
+
         public virtual void Add(T entity)
         {
+            entity.Id = NextId();
             this.list.Add(entity);
         }
 
@@ -31,7 +37,6 @@ namespace TodoApi.Data
                 if (toDel == null)
                 {
                     throw new ObjectNotExistsInRepoException<Todo>() { objectId = Id };
-                    //                return false;
                 }
                 else
                 {
@@ -40,7 +45,6 @@ namespace TodoApi.Data
             }
             catch (Exception ex)
             {
-                // Log first 
                 throw ex;
             }
         }
