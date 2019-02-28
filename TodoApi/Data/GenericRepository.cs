@@ -53,13 +53,14 @@ namespace TodoApi.Data
         {
             return list.FirstOrDefault(p => p.Id == Id);
         }
-
+        
         public virtual T FindByName(string title)
         {
             return list.FirstOrDefault(p => p.Name.Contains(title, StringComparison.OrdinalIgnoreCase));
         }
 
         public abstract void Update(int id, T entity);
+
     }
 
 }

@@ -22,21 +22,21 @@ namespace TodoApi.Models
 
     public class TodoListItem : Entity
     {
-        public TodoListItem(int id, int todoId, string name) : base(id, name)
+        public TodoListItem(int id, int todoId, DateTime due, string name) : base(id, name)
         {
             TodoId = todoId;
+            DueDate = due;
         }
-        public Todo Todo { get; set; }
+        public DateTime DueDate { get; set; }
         public int TodoId { get; set; }
     }
     public class Todo : Entity
     {
-        public Todo(int id, string name, DateTime due, int userId) : base(id, name)
-        {
-            DueDate = due;
+        public Todo(int id, string name,  int userId) : base(id, name)
+        {          
             UserID = userId;
         }
-        public DateTime DueDate { get; set; }
+
         public IList<TodoListItem> Items { get; set; }
         public int UserID { get; set; }
     }

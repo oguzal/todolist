@@ -9,10 +9,10 @@ namespace TodoApi.Data
 {
     public class TodoRepository : GenericRepository<Todo>
     {
-        public Todo CreateNewTodo(string name, DateTime due, int userID)
+        public Todo CreateNewTodo(string name, int userID)
         {
             var id = NextId();
-            var todo = new Todo(id, name, due, userID);
+            var todo = new Todo(id, name, userID);
             return todo;
         }
 
@@ -26,7 +26,6 @@ namespace TodoApi.Data
             else
             {
                 todo.Name = entity.Name;
-                todo.DueDate = entity.DueDate;
                 todo.IsDone = entity.IsDone;
             }
         }

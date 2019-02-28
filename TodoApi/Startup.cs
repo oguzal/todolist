@@ -38,7 +38,6 @@ namespace TodoApi
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddSingleton<GenericRepository<Todo>, TodoRepository>();
             services.AddSingleton<GenericRepository<TodoListItem>, TodoListItemRepository>();
-
   //                  options.UseSqlServer(Configuration.GetConnectionString("TodoApiContext")));
         }
 

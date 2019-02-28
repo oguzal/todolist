@@ -8,10 +8,15 @@ namespace TodoApi.Data
 {
     class TodoListItemRepository : GenericRepository<TodoListItem>
     {
+        public IEnumerable<TodoListItem> FindByDueDate(DateTime due)
+        {
+            return List().Where(p => p.DueDate.Date == due.Date);
+        }
         public override void Update(int id, TodoListItem entity)
         {
             var toUpdate = FindById(id);
-            if (toUpdate == null) {
+            if (toUpdate == null)
+            {
                 throw new ObjectNotExistsInRepoException<TodoListItem>();
             }
         }

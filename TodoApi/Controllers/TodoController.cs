@@ -22,19 +22,16 @@ namespace TodoApi.Controllers
             Repository = repository;
         }
 
-        //public TodoController(TodoRepository repository)
-        //{
-        //    Repository =repository;
-        //}
+   
 
-        // GET: api/Todoes
+        // GET: api/Todo
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Todo>>> GetTodo()
         {
             return  Repository.List();
         }
 
-        // GET: api/Todoes/5
+        // GET: api/Todo/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Todo>> GetTodo(int id)
         {
@@ -48,7 +45,7 @@ namespace TodoApi.Controllers
             return todo;
         }
 
-        // PUT: api/Todoes/5
+        // PUT: api/Todo/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutTodo(int id, Todo todo)
         {
@@ -71,7 +68,7 @@ namespace TodoApi.Controllers
             }
         }
 
-        // POST: api/Todoes
+        // POST: api/Todo
         [HttpPost]
         public async Task<ActionResult<Todo>> PostTodo(Todo todo)
         {
@@ -79,7 +76,7 @@ namespace TodoApi.Controllers
             return CreatedAtAction("GetTodo", new { id = todo.Id }, todo);
         }
 
-        // DELETE: api/Todoes/5
+        // DELETE: api/Todo/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<Todo>> DeleteTodo(int id)
         {

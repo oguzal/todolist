@@ -36,7 +36,7 @@ namespace TodoTestProject.Controllers
 
         private TodoController CreateTodoController()
         {
-            return new TodoController();
+            return new TodoController(todoRepository);
         }
 
         [Test]
@@ -76,7 +76,7 @@ namespace TodoTestProject.Controllers
             DateTime due = new DateTime(2019, 6, 6);
             int userId = 5;
 
-            var todo = todoRepository.CreateNewTodo(todoName, due, userId);
+            var todo = todoRepository.CreateNewTodo(todoName,userId);
 
             // Act
             var result = await unitUnderTest.PutTodo(
@@ -95,7 +95,7 @@ namespace TodoTestProject.Controllers
             string todoName = "Clean room";
             DateTime due = new DateTime(2019, 6, 6);
             int userId = 5;
-            var todo = todoRepository.CreateNewTodo(todoName, due, userId);
+            var todo = todoRepository.CreateNewTodo(todoName, userId);
             // Act
             var result = unitUnderTest.PostTodo(todo);
 
