@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using TodoApi.Models;
+using TodoApi.Data;
 
 namespace TodoApi
 {
@@ -35,8 +36,9 @@ namespace TodoApi
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddSingleton<GenericRepository<Todo>, TodoRepository>();
+            services.AddSingleton<GenericRepository<TodoListItem>, TodoListItemRepository>();
 
-//            services.AddDbContext<TodoApiContext>(options =>
   //                  options.UseSqlServer(Configuration.GetConnectionString("TodoApiContext")));
         }
 
@@ -54,7 +56,7 @@ namespace TodoApi
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+           // app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
 

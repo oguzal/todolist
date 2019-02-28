@@ -15,11 +15,11 @@ namespace TodoApi.Controllers
     [ApiController]
     public class TodoController : ControllerBase
     {
-        private TodoRepository Repository;
+        private GenericRepository<Todo> Repository;
         
-        public TodoController()
+        public TodoController(GenericRepository<Todo> repository)
         {
-            Repository = new TodoRepository();
+            Repository = repository;
         }
 
         //public TodoController(TodoRepository repository)
